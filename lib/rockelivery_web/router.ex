@@ -7,6 +7,10 @@ defmodule RockeliveryWeb.Router do
 
   scope "/api", RockeliveryWeb do
     pipe_through(:api)
+
+    get("/welcome", WelcomeController, :index)
+    get("/users/:id", ComparisonController, :show)
+    post("/users", ComparisonController, :create)
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
