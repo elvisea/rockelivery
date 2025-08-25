@@ -9,8 +9,6 @@ defmodule RockeliveryWeb.Router do
     pipe_through(:api)
 
     get("/welcome", WelcomeController, :index)
-    get("/users/:id", ComparisonController, :show)
-    post("/users", ComparisonController, :create)
 
     # Rotas para demonstração de tipagem
     get("/typed/users/:id", TypedController, :get_user_typed)
@@ -19,6 +17,10 @@ defmodule RockeliveryWeb.Router do
     get("/typed/users-validation/:id", TypedController, :get_user_with_validation)
     post("/typed/users-centralized", TypedController, :create_user_with_centralized_types)
     get("/typed/compare", TypedController, :compare_typing_approaches)
+
+    # Rotas para usuários (SOLID - Responsabilidade Única)
+    post("/users", UserCreateController, :create)
+    put("/users/:id", UserUpdateController, :update)
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
